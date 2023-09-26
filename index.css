@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(228, 243, 228);
+    background-color: rgb(22, 113, 85);
     border: 3px solid rgb(187, 186, 186);
     border-radius: 10px;
     align-items: center;
@@ -9,6 +9,15 @@
 .logo{
     width:90px;
     border-radius: 50%;
+}
+.company-name{
+    display: flex;
+    font-size: 50px;
+    color: aliceblue;
+    font-family:cursive;
+    align-items: center;
+    justify-content: center;
+    margin-left: 200px;
 }
 .nav-items > ul {
     display: flex;
@@ -21,21 +30,22 @@
 }
 .res-card{
     /* padding: 5px; */
+    align-items: center;
+    justify-content: center;
     width:220px;
     height: 450px;
     background-color: rgb(228, 243, 228);
     border-radius: 10px;
-    margin: 7px;
+    margin: 10px;
     border: 3px solid rgb(164, 241, 159);
 }
-.res-card >h4,h3{
+.description{
     margin: 5px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: green;   
+    color: green;
 }
-.res-card >h4:hover{
-
-    /* border: 3px solid rgb(187, 186, 186); */
+.description >h3,h4{
+    margin: 2px;
 }
 .res-card :hover{
     cursor: pointer;
@@ -43,6 +53,28 @@
 }
 .search-bar{
     padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.input-text{
+    width: 500px;
+    height: 23px;
+    border: 2px solid green;
+    border-radius: 5px;
+    margin: 5px;
+}
+.input-text:hover{
+    background-color: rgb(228, 243, 228);
+}
+.search-btn{
+    width: 80px;
+    border: 2px solid green;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.search-btn:hover{
+    background-color: rgb(22, 113, 85);
 }
 .res-logo{
 width: 200px;
@@ -50,9 +82,15 @@ margin: 5px;
 }
 .body{
     /* display: flex; */
+    background-color: rgb(129, 201, 179);
 }
 .res-container{
     display: flex;
     flex-wrap:wrap ;
     margin: 5px;
+}
+.filter-btn{
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
 }
