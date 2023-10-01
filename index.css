@@ -94,3 +94,32 @@ margin: 5px;
     margin: 10px;
     cursor: pointer;
 }
+.shimmer-container{
+    display: flex;
+    flex-wrap:wrap ;
+    margin: 5px;
+}
+.shimmer-card{
+    width:220px;
+    height: 450px;
+    /* background-color: rgb(214, 214, 214); */
+    border-radius: 10px;
+    margin: 10px;
+}
+.shimmer-logo{
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    background-color: rgb(185, 184, 184);
+}
+.shimmer-text{
+    margin: 10px;
+    background-color: rgb(189, 190, 189);
+    width: 200px;
+    height: 20px;
+}
+.login-btn{
+    margin: 5px;
+    padding: 3px;
+    height: 30px;
+}

@@ -1,290 +1,53 @@
 import RestCard from "./RestCard";  
-import resList from "../utils/mockData";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Shimmer from "./Shimmer";
 
-// let listOfRest = [
-//         {
-//         "info": {
-//             "id": "65792",
-//             "name": "HEHEA & Wings (Leon Grill)",
-//             "cloudinaryImageId": "r4ufflqojich0r29efvc",
-//             "locality": "Koramangala",
-//             "areaName": "Koramangala",
-//             "costForTwo": "₹300 for two",
-//             "cuisines": [
-//               "American",
-//               "Snacks",
-//               "Turkish",
-//               "Portuguese",
-//               "Continental"
-//             ],
-//             "avgRating": 4.3,
-//             "feeDetails": {
-//               "restaurantId": "65797",
-//               "fees": [
-//                 {
-//                   "name": "BASE_DISTANCE",
-//                   "fee": 3000
-//                 },
-//                 {
-//                   "name": "ANCILLARY_SURGE_FEE"
-//                 },
-//                 {
-//                   "name": "BASE_TIME"
-//                 }
-//               ],
-//               "totalFee": 3000
-//             },
-//             "parentId": "371281",
-//             "avgRatingString": "4.3",
-//             "totalRatingsString": "10K+",
-//             "sla": {
-//               "deliveryTime": 25,
-//               "lastMileTravel": 1.3,
-//               "serviceability": "SERVICEABLE",
-//               "slaString": "25 mins",
-//               "lastMileTravelString": "1.3 km",
-//               "iconType": "ICON_TYPE_EMPTY"
-//             },
-//             "availability": {
-//               "nextCloseTime": "2023-09-14 04:00:00",
-//               "opened": true
-//             },
-//             "badges": {
-              
-//             },
-//             "isOpen": true,
-//             "aggregatedDiscountInfoV2": {
-              
-//             },
-//             "type": "F",
-//             "badgesV2": {
-//               "entityBadges": {
-//                 "imageBased": {
-                  
-//                 },
-//                 "textBased": {
-                  
-//                 },
-//                 "textExtendedBadges": {
-                  
-//                 }
-//               }
-//             },
-//             "differentiatedUi": {
-//               "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-//               "differentiatedUiMediaDetails": {
-//                 "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-//                 "lottie": {
-                  
-//                 },
-//                 "video": {
-                  
-//                 }
-//               }
-//             },
-//             "reviewsSummary": {
-              
-//             },
-//             "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-//             "restaurantOfferPresentationInfo": {
-              
-//             }
-//           }
-//         },
-//         {
-//             "info": {
-//             "id": "65797",
-//             "name": "Leon's - Burgers & Wings (Leon Grill)",
-//             "cloudinaryImageId": "r4ufflqojich0r29efvc",
-//             "locality": "Koramangala",
-//             "areaName": "Koramangala",
-//             "costForTwo": "₹300 for two",
-//             "cuisines": [
-//               "American",
-//               "Snacks",
-//               "Turkish",
-//               "Portuguese",
-//               "Continental"
-//             ],
-//             "avgRating": 4.7,
-//             "feeDetails": {
-//               "restaurantId": "65797",
-//               "fees": [
-//                 {
-//                   "name": "BASE_DISTANCE",
-//                   "fee": 3000
-//                 },
-//                 {
-//                   "name": "ANCILLARY_SURGE_FEE"
-//                 },
-//                 {
-//                   "name": "BASE_TIME"
-//                 }
-//               ],
-//               "totalFee": 3000
-//             },
-//             "parentId": "371281",
-//             "avgRatingString": "4.3",
-//             "totalRatingsString": "10K+",
-//             "sla": {
-//               "deliveryTime": 25,
-//               "lastMileTravel": 1.3,
-//               "serviceability": "SERVICEABLE",
-//               "slaString": "25 mins",
-//               "lastMileTravelString": "1.3 km",
-//               "iconType": "ICON_TYPE_EMPTY"
-//             },
-//             "availability": {
-//               "nextCloseTime": "2023-09-14 04:00:00",
-//               "opened": true
-//             },
-//             "badges": {
-              
-//             },
-//             "isOpen": true,
-//             "aggregatedDiscountInfoV2": {
-              
-//             },
-//             "type": "F",
-//             "badgesV2": {
-//               "entityBadges": {
-//                 "imageBased": {
-                  
-//                 },
-//                 "textBased": {
-                  
-//                 },
-//                 "textExtendedBadges": {
-                  
-//                 }
-//               }
-//             },
-//             "differentiatedUi": {
-//               "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-//               "differentiatedUiMediaDetails": {
-//                 "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-//                 "lottie": {
-                  
-//                 },
-//                 "video": {
-                  
-//                 }
-//               }
-//             },
-//             "reviewsSummary": {
-              
-//             },
-//             "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-//             "restaurantOfferPresentationInfo": {
-              
-//             }
-//           }
-//         },
-//         {   
-//           "info": {
-//             "id": "65717",
-//             "name": "C Burgers & Wings (Leon Grill)",
-//             "cloudinaryImageId": "r4ufflqojich0r29efvc",
-//             "locality": "Koramangala",
-//             "areaName": "Koramangala",
-//             "costForTwo": "₹300 for two",
-//             "cuisines": [
-//               "American",
-//               "Snacks",
-//               "Turkish",
-//               "Portuguese",
-//               "Continental"
-//             ],
-//             "avgRating": 2.9,
-//             "feeDetails": {
-//               "restaurantId": "65797",
-//               "fees": [
-//                 {
-//                   "name": "BASE_DISTANCE",
-//                   "fee": 3000
-//                 },
-//                 {
-//                   "name": "ANCILLARY_SURGE_FEE"
-//                 },
-//                 {
-//                   "name": "BASE_TIME"
-//                 }
-//               ],
-//               "totalFee": 3000
-//             },
-//             "parentId": "371281",
-//             "avgRatingString": "4.3",
-//             "totalRatingsString": "10K+",
-//             "sla": {
-//               "deliveryTime": 25,
-//               "lastMileTravel": 1.3,
-//               "serviceability": "SERVICEABLE",
-//               "slaString": "25 mins",
-//               "lastMileTravelString": "1.3 km",
-//               "iconType": "ICON_TYPE_EMPTY"
-//             },
-//             "availability": {
-//               "nextCloseTime": "2023-09-14 04:00:00",
-//               "opened": true
-//             },
-//             "badges": {
-              
-//             },
-//             "isOpen": true,
-//             "aggregatedDiscountInfoV2": {
-              
-//             },
-//             "type": "F",
-//             "badgesV2": {
-//               "entityBadges": {
-//                 "imageBased": {
-                  
-//                 },
-//                 "textBased": {
-                  
-//                 },
-//                 "textExtendedBadges": {
-                  
-//                 }
-//               }
-//             },
-//             "differentiatedUi": {
-//               "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-//               "differentiatedUiMediaDetails": {
-//                 "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-//                 "lottie": {
-                  
-//                 },
-//                 "video": {
-                  
-//                 }
-//               }
-//             },
-//             "reviewsSummary": {
-              
-//             },
-//             "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-//             "restaurantOfferPresentationInfo": {
-              
-//             }
-//           }
-//         }
-// ]
 const Body =() =>
 {
-const [listOfRestJs, setListOfTestState] = useState(resList)
+const [listOfRestJs, setListOfRest] = useState([]);
+const [filteredList, setFiltered] = useState([]);
+const [searchText, setSearchText]= useState("");
 
-    return (
+useEffect(()=>{
+    fetchData();
+},[]);
+
+const fetchData = async ()=>{
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+
+    const json = await data.json();
+    console.log(json);
+    // optional chaining
+    setListOfRest(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFiltered(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+}
+// conditional rendering
+
+
+    return listOfRestJs.length === 0 ? <Shimmer/>:(
         <div className="body">
         <div className="search-bar">
-            <input className="input-text" type="text" />
-            <button className="search-btn">Search</button>
+            <input className="input-text" type="text" 
+                value={searchText}
+                onChange={(e)=>{
+                    setSearchText(e.target.value)
+                }}
+            />
+            <button className="search-btn" 
+            onClick={()=>{
+                console.log(searchText)
+                const filteredList = listOfRestJs.filter(
+                    (res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                )
+                setFiltered(filteredList)
+                console.log()
+            }}
+            >Search</button>
         </div>
         <div className="filter">
             <button className="filter-btn"
             onClick={()=>{
-                setListOfTestState( listOfRestJs.filter(
+                setListOfRest( listOfRestJs.filter(
                     (res)=> res.info.avgRating >= 4.3
             ))
             console.log(listOfRestJs)
@@ -292,7 +55,7 @@ const [listOfRestJs, setListOfTestState] = useState(resList)
             >Top Rated Restuarants</button>
             <button className="filter-btn"
             onClick={()=>{
-              setListOfTestState(listOfRestJs.filter(
+                setListOfRest(listOfRestJs.filter(
                 (res)=> res.info.sla.deliveryTime < 30 
                 ))
             }}
@@ -300,7 +63,7 @@ const [listOfRestJs, setListOfTestState] = useState(resList)
         </div>
             <div className="res-container">
             {
-                listOfRestJs.map((res) => <RestCard 
+                filteredList.map((res) => <RestCard 
               key = {res.info.id}
               resData={res}/>)
             }
